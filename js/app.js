@@ -46,6 +46,8 @@ buyEth.addEventListener('click', function(){
     updatePortfolio('eth-box')
 })
 
+
+
 //update portfolio
 
 function updatePortfolio(boxID){
