@@ -37,3 +37,37 @@ depositBtn.addEventListener("click", function(event){
     
     //depositBox.value = " ";
 });
+
+//buy coins
+buyBtc.addEventListener('click', function(){
+    updatePortfolio('btc-box');
+})
+buyEth.addEventListener('click', function(){
+    updatePortfolio('eth-box')
+})
+
+//update portfolio
+
+function updatePortfolio(boxID){
+    let availableBalance = parseFloat(balanceField.innerText);
+    let coinAmount = getInputValue(boxID);
+    if(coinAmount > 0){
+        let totalExpenses;
+        if(boxID == 'btc-box'){
+            totalExpenses = 10 * coinAmount
+            if(totalExpenses > availableBalance){
+                return alert('not enough balance')
+            }
+            btcField.innerText = coinAmount;
+            
+        }
+        else if (boxID == 'eth-box'){
+            totalExpenses = 5 * coinAmount
+            if (totalExpenses > availableBalance) {
+                return alert('not enough balance')
+            }
+            ethfield.innerText = coinAmount;
+        }
+        balanceField.innerText = availableBalance - totalExpenses;
+    }
+}
